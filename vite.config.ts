@@ -1,0 +1,49 @@
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import fs from 'fs';
+import {defineConfig, loadEnv} from 'vite';
+
+export default defineConfig(({mode}) => {
+  const env = loadEnv(mode, '.', '');
+  return {
+    plugins: [
+      react(), 
+      tailwindcss(),
+      {
+        name: 'serve-pptx-mime',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url && req.url.startsWith('/Explora_Cordillera_Blanca_Expedition.pptx')) {
+              const filePath = path.resolve(__dirname, 'public/Explora_Cordillera_Blanca_Expedition.pptx');
+              if (fs.existsSync(filePath)) {
+                const stat = fs.statSync(filePath);
+                res.writeHead(200, {
+                  'Content-Type': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                  'Content-Disposition': 'attachment; filename="Explora_Cordillera_Blanca_Expedition.pptx"',
+                  'Content-Length': stat.size,
+                });
+                const stream = fs.createReadStream(filePath);
+                return stream.pipe(res);
+              }
+            }
+            next();
+          });
+        }
+      }
+    ],
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
+    },
+  };
+});
