@@ -120,7 +120,7 @@ async function createPresentation() {
     lineSpacing: 42
   });
 
-  s2.addText('True exploration is never about admiring peaks from afar,\nbut about traversing the living corridor where glacial source, ancestral canals, and community thrive.\n— Explora Expeditions', {
+  s2.addText('True exploration is never about admiring peaks from afar,\nbut about traversing a territory where glaciers, ancestral canals, communities, and highland crops are deeply bound together.\n— Explora Expeditions', {
     x: 1.2,
     y: 4.6,
     w: 9.8,
@@ -149,7 +149,7 @@ async function createPresentation() {
     lineSpacing: 22
   });
 
-  s3.addText('Millennia-old meltwater feeds luminous turquoise moraine tarns, gravity-fed pre-Inca aqueducts, and terraced orchards cultivating export blueberries, strawberries, cut roses, and heritage potatoes.\n\nThis expedition invites travelers to follow the glacial lifeline: from 20,000-foot summits down through cloud-forest slopes to the Quechua families who have mastered life with the runoff for centuries.', {
+  s3.addText('Millennia-old meltwater feeds luminous turquoise moraine tarns, gravity-fed pre-Inca aqueducts, and fertile valley terraces that sustain the life and heritage of Andean communities, nourishing thriving harvests of export blueberries, strawberries, cut roses, and native potatoes.\n\nThis expedition invites travelers to follow the glacial lifeline: from 20,000-foot summits down through cloud-forest slopes to the Quechua families who have mastered life with the runoff for centuries.', {
     x: 0.8,
     y: 3.5,
     w: 7.2,
@@ -771,7 +771,7 @@ async function createPresentation() {
     charSpacing: 1
   });
 
-  s12.addText('A colossal overland journey climbing between the eastern walls of Mount Huascarán and Chopicalqui to cross Punta Olímpica Tunnel (15,530 ft), the highest vehicular tunnel in the world.\n\nWe descend into the lush eastern valleys toward Chacas, a colonial town frozen in time with hand-carved balconies and cobblestones. Here we encounter the moving legacy of Father Ugo de Censi and the Don Bosco Artisans: local Quechua youths trained in Renaissance Italian wood carving, stone sculpture, and stained glass whose works grace the Vatican.\n\nWe complete the day at Cuesta Serena Lodge with a celebratory dinner facing Mount Huascarán.', {
+  s12.addText('A scenic overland crossing of the continental divide, tracing the rugged pass between Mount Huascarán and Chopicalqui before piercing Punta Olímpica at 15,530 feet. As the route reveals Huascarán from dramatic, ever-shifting angles, the high alpine gives way to the verdant eastern valleys of Chacas, a tranquil colonial enclave famed for its carved timber balconies.\n\nHere, travelers encounter one of the Andes’ most profound social legacies: the Don Bosco ateliers founded by Father Ugo de Censi, where Quechua craftspeople master Renaissance joinery, stone sculpture, and stained glass commissioned by cathedrals worldwide and the Vatican.\n\nThe day draws to a close at Cuesta Serena Lodge, with evening views across the Cordillera Blanca.', {
     x: 0.8,
     y: 2.2,
     w: 5.8,
@@ -1042,23 +1042,39 @@ async function createPresentation() {
   // ----------------------------------------------------
   const s16 = pres.addSlide();
   s16.background = { color: C_LIGHT };
-  addHeader(s16, 'Base Camps: The Luxury of the Essential', 'Curated Mountain Outposts', true);
+  addHeader(s16, 'Base Camps: The Luxury of the Essential', 'Curated Mountain Lodges', true);
+
+  s16.addText('Explora’s lodging philosophy embraces "the luxury of the essential": intimate, character-filled mountain properties serving as strategic sanctuaries for restorative sleep, altitude oxygenation, and territorial immersion.', {
+    x: 0.8,
+    y: 1.15,
+    w: 11.5,
+    h: 0.45,
+    fontSize: 11.5,
+    fontFace: FONT_SANS,
+    color: '555555'
+  });
 
   const lodges = [
     {
       name: 'Santa Cruz Lodge',
+      nights: 'NIGHTS 1 & 2',
       loc: 'Caraz • 7,380 ft / 2,250 m',
-      desc: 'Traditional Andean hacienda set amidst fruit orchards and gardens. The ideal base to gently acclimatize at low elevation, enjoying organic garden-to-table cuisine.'
+      tagline: 'Organic Valley Cradle & Acclimatization Oasis',
+      desc: '• Historic Andean country estate set amidst fruit orchards and gardens.\n• Sheltered valley microclimate for low-altitude oxygenation and deep sleep.\n• Organic farm-to-table cuisine picked fresh from the lodge huerta.\n• Warm fireside storytelling honoring the mountain Apus.'
     },
     {
       name: 'Wayarumi Eco-Lodge',
+      nights: 'NIGHTS 3 & 4',
       loc: 'Yungay / Mancos • 8,200 ft / 2,500 m',
-      desc: 'Strategically positioned facing the colossal western face of Mount Huascarán. Adobe and native wood architecture, wood-burning fireplaces, and direct glacier views.'
+      tagline: 'Front-Row Glacier Sanctuary at Huascarán',
+      desc: '• Positioned directly opposite the colossal western face of Mount Huascarán.\n• Vernacular architecture in river stone, sun-dried adobe, and native beams.\n• Strategic mountain outpost minimizing travel to Parón and Laguna 513.\n• Unpolluted dark-sky stargazing and Andean astronomy around the hearth.'
     },
     {
       name: 'Cuesta Serena Lodge',
+      nights: 'NIGHT 5',
       loc: 'Anta / Marcará • 9,180 ft / 2,800 m',
-      desc: 'Boutique luxury lodge with an Andean spa, heated pool, and tranquil gardens gazing upon the central massif. The refined finale of comfort and wellness.'
+      tagline: 'Boutique Luxury & Celebratory Alpine Finale',
+      desc: '• Refined boutique luxury retreat on seven tranquil acres of hillside gardens.\n• Uninterrupted 180° amphitheater views of the entire Cordillera Blanca.\n• Heated outdoor swimming pool, Andean herbal spa, and fire pits.\n• Celebration dinner with progressive valley gastronomy and artisanal pairings.'
     }
   ];
 
@@ -1066,19 +1082,31 @@ async function createPresentation() {
     const x = 0.8 + i * 3.95;
     s16.addShape(pres.shapes.RECTANGLE, {
       x: x,
-      y: 1.8,
+      y: 1.65,
       w: 3.75,
-      h: 4.8,
+      h: 4.4,
       fill: { color: C_WHITE },
       line: { color: 'DDD9CF', pt: 1 }
     });
 
+    s16.addText(l.nights, {
+      x: x + 0.3,
+      y: 1.85,
+      w: 3.15,
+      h: 0.25,
+      fontSize: 9,
+      fontFace: FONT_SANS,
+      color: C_GOLD,
+      bold: true,
+      charSpacing: 2
+    });
+
     s16.addText(l.name, {
       x: x + 0.3,
-      y: 2.2,
+      y: 2.15,
       w: 3.15,
-      h: 0.5,
-      fontSize: 16,
+      h: 0.45,
+      fontSize: 15,
       fontFace: FONT_SERIF,
       color: C_DARK,
       bold: true
@@ -1086,25 +1114,58 @@ async function createPresentation() {
 
     s16.addText(l.loc, {
       x: x + 0.3,
-      y: 2.7,
+      y: 2.65,
       w: 3.15,
-      h: 0.3,
+      h: 0.25,
+      fontSize: 9.5,
+      fontFace: FONT_SANS,
+      color: '666666',
+      bold: true
+    });
+
+    s16.addText(l.tagline, {
+      x: x + 0.3,
+      y: 2.95,
+      w: 3.15,
+      h: 0.45,
       fontSize: 10,
       fontFace: FONT_SANS,
-      color: C_GOLD,
-      bold: true
+      color: C_DARK,
+      bold: true,
+      italic: true
     });
 
     s16.addText(l.desc, {
       x: x + 0.3,
-      y: 3.2,
+      y: 3.45,
       w: 3.15,
-      h: 3.0,
-      fontSize: 11.5,
+      h: 2.45,
+      fontSize: 10.5,
       fontFace: FONT_SANS,
       color: '444444',
-      lineSpacing: 18
+      lineSpacing: 16
     });
+  });
+
+  // Extension note banner
+  s16.addShape(pres.shapes.RECTANGLE, {
+    x: 0.8,
+    y: 6.2,
+    w: 11.65,
+    h: 0.7,
+    fill: { color: 'EBE7DF' },
+    line: { color: 'D5D0C5', pt: 1 }
+  });
+
+  s16.addText('HIGH-MOUNTAIN EXTENSION BASE CAMPS: Refugio Llaca (14,665 ft / 4,470 m) — authentic stone alpine hut beneath Llaca Glacier moraine • Hotel El Abuelo (Huaraz • 10,000 ft / 3,050 m) — historic climbers’ retreat for post-summit recovery.', {
+    x: 1.1,
+    y: 6.3,
+    w: 11.0,
+    h: 0.5,
+    fontSize: 9.5,
+    fontFace: FONT_SANS,
+    color: '333333',
+    lineSpacing: 14
   });
 
   // ----------------------------------------------------
@@ -1212,19 +1273,19 @@ async function createPresentation() {
 
   const fleet = [
     {
-      title: 'Mercedes-Benz Sprinter 4x4',
-      sub: 'Overland Highway Comfort',
-      features: '• Reclining leather seating\n• Thermal panoramic windows\n• Heavy-duty unpaved road suspension\n• Medical-grade oxygen system onboard\n• USB charging ports and travel amenities'
+      title: 'Mercedes-Benz Sprinter 4x4 Van',
+      sub: 'Overland Highway & Valley Transit',
+      features: '• Reclining leather seating & generous legroom\n• Thermal panoramic windows for 360° views\n• Heavy-duty unpaved road 4x4 suspension\n• Continuous-flow medical oxygen system onboard\n• USB-C charging ports and cold refreshments'
     },
     {
-      title: 'Jeep Rubicon / Toyota Prado 4WD',
-      sub: 'Access to Remote Moraine Tracks',
-      features: '• Low-range 4WD transfer case\n• Access to roadless glacial valleys\n• Small, intimate group configurations\n• High-end bike carrier mounts\n• Garmin InReach satellite communications'
+      title: 'Jeep / Toyota Land Cruiser 4WD',
+      sub: 'Dedicated Expedition 4x4 for Travelers',
+      features: '• Heavy-duty dual-range 4WD transfer case\n• High clearance for steep moraine tracks & tarns\n• Intimate 3–4 traveler seating configuration\n• Heavy-duty bike mounts for gravel trailheads\n• Garmin InReach satellite tracking & trauma kit'
     },
     {
-      title: 'Gravel & Mountain Bike Fleet',
-      sub: 'Active Valley Exploration',
-      features: '• Specialized bicycles for dirt and gravel roads\n• Electric pedal-assist available for altitude climbs\n• Homologated safety helmets and gear\n• Permanent chase vehicle support on trail'
+      title: 'Gravel Bikes & Chase Support',
+      sub: 'Active Human-Scale Exploration',
+      features: '• High-performance gravel & mountain bicycles\n• Electric pedal-assist available for alpine climbs\n• Homologated safety helmets and protective gear\n• Permanent 4WD chase vehicle support on trail'
     }
   ];
 
@@ -1493,7 +1554,7 @@ async function createPresentation() {
     bold: true
   });
 
-  s20.addText('• All private 4WD ground transfers to/from Anta Airport\n• 5 nights accommodation in curated boutique mountain lodges\n• Full board: daily breakfasts, trail box lunches, and curated multi-course lodge dinners\n• Daily exploration menu (active alpine hikes, botanical walks, gravel bike routes, cultural visits)\n• Bilingual Explora expedition guides and certified local specialists\n• Full exploration gear: trekking poles, bikes, helmets, medical oxygen, and first aid\n• National park entrance fees and community conservation permits\n• Direct social contribution to the Don Bosco Artisans Foundation in Chacas', {
+  s20.addText('• All private 4WD ground transfers to/from Anta Airport\n• 5 nights accommodation in curated boutique mountain lodges\n• Full board: daily breakfasts, trail box lunches, and curated multi-course lodge dinners\n• Curated daily explorations (active alpine hikes, botanical walks, gravel bike routes, cultural visits)\n• Bilingual Explora expedition guides and certified local specialists\n• Full exploration gear: trekking poles, bikes, helmets, medical oxygen, and first aid\n• National park entrance fees and community conservation permits\n• Direct social contribution to the Don Bosco Artisans Foundation in Chacas', {
     x: 6.4,
     y: 2.85,
     w: 5.7,

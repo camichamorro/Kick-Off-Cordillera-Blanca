@@ -29,7 +29,9 @@ import {
   Flame,
   Sun,
   Eye,
-  Utensils
+  Utensils,
+  Car,
+  Radio
 } from "lucide-react";
 
 interface Experience {
@@ -232,7 +234,7 @@ const ITINERARY_DAYS: DayData[] = [
     zones: ["Cordillera Blanca", "Cloud Forest & Eastern Valleys (Chacas)"],
     lodging: "Cuesta Serena Lodge (Anta / Marcará)",
     summary:
-      "A grand trans-Andean overland traverse. We climb between the eastern walls of Mount Huascarán and Chopicalqui, passing through Punta Olímpica Tunnel (15,530 ft)—the highest vehicular tunnel in the world. We descend into the lush eastern valleys toward Chacas, a colonial town preserved in time with hand-carved balconies. Here we discover the moving work of Father Ugo de Censi and the Don Bosco Artisans: local Quechua youths trained in Renaissance Italian joinery, masonry, and stained glass whose sacred art graces the Vatican. We conclude at Cuesta Serena Lodge with a celebration dinner facing Mount Huascarán.",
+      "A scenic overland crossing of the continental divide, tracing the rugged pass between Mount Huascarán and Chopicalqui before piercing the granite heights of Punta Olímpica at 15,530 feet. As the route reveals Huascarán from dramatic, ever-shifting angles, the high alpine gives way to the verdant eastern valleys of Chacas, a serene colonial enclave famed for its carved timber balconies. Here, travelers encounter one of the Andes’ most profound social legacies: the Don Bosco ateliers founded by Father Ugo de Censi, where Quechua craftspeople master Renaissance joinery, stone sculpture, and stained glass commissioned by cathedrals worldwide and the Vatican. The day draws to a close at Cuesta Serena Lodge, with evening views across the Cordillera Blanca.",
     whyUnique:
       "The rare synthesis of monumental alpine geography and profound human dignity. While conventional tours bypass the eastern slope, we make Chacas the emotional apex of the journey.",
     highlight: "Examining hand-carved altarpieces and stained glass crafted by master Andean artisans",
@@ -358,6 +360,160 @@ const ECOLOGICAL_ZONES = [
   }
 ];
 
+const LODGES_DATA = [
+  {
+    id: "santa-cruz",
+    name: "Santa Cruz Lodge",
+    nights: "Nights 1 & 2",
+    location: "Caraz • Callejón de Huaylas",
+    elevation: "7,380 ft / 2,250 m",
+    role: "Gentle Arrival, Deep Oxygenation & Organic Earth",
+    tagline: "The Organic Valley Cradle & Acclimatization Oasis",
+    concept:
+      "A historic Andean country estate set in the temperate, sun-blessed microclimate of Caraz. Sheltered by surrounding bluffs, it provides the ideal low-elevation sanctuary during the crucial first 48 hours, allowing the body to deeply oxygenate and rest while touching the living soil of the Andes.",
+    architecture:
+      "Traditional colonial-Andean hacienda architecture with whitewashed adobe walls, terracotta-tiled roofs, courtyards draped in flowering bougainvillea, and open verandas facing tranquil gardens.",
+    dining:
+      "True garden-to-table cuisine. Guests harvest fresh heirloom vegetables, berries, and aromatic herbs directly from the lodge's organic huerta for evening dinners served by warm wood hearths.",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200",
+    amenities: [
+      "Working organic vegetable & berry orchards",
+      "Low-altitude sleeping sanctuary (7,380 ft)",
+      "Cozy fireside lounge for evening storytelling",
+      "Native herbal tea bar & outdoor garden terraces"
+    ]
+  },
+  {
+    id: "wayarumi",
+    name: "Wayarumi Eco-Lodge",
+    nights: "Nights 3 & 4",
+    location: "Yungay / Mancos • Callejón de Huaylas",
+    elevation: "8,200 ft / 2,500 m",
+    role: "Strategic Wilderness Base & Front-Row Glacier Views",
+    tagline: "The Glacier Sanctuary at the Foot of Huascarán",
+    concept:
+      "Positioned directly opposite the staggering 22,205-foot western face of Mount Huascarán, Wayarumi delivers an authentic mountain outpost atmosphere. It serves as our strategic bridgehead, cutting travel time to remote glacial jewels like Laguna Parón and Laguna 513 while maintaining low-stress sleeping altitudes.",
+    architecture:
+      "Built strictly from vernacular materials: local river boulders, sun-baked adobe bricks, and hand-hewn native eucalyptus timber. Designed with panoramic windows that turn Mount Huascarán into a living living-room canvas.",
+    dining:
+      "Wholesome mountain sustenance: hot Andean quinoa bisques, wood-fired hearth roasts, and hearty trail preparations, followed by outdoor fireside hot chocolate and local craft spirits under the southern constellations.",
+    image:
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
+    amenities: [
+      "Front-row amphitheater views of Mount Huascarán",
+      "Dark-sky stargazing terrace & outdoor fire pits",
+      "Wood-burning cast-iron stoves in mountain suites",
+      "Immediate trail access to high moraine valleys"
+    ]
+  },
+  {
+    id: "cuesta-serena",
+    name: "Cuesta Serena Lodge",
+    nights: "Night 5",
+    location: "Anta / Marcará • Callejón de Huaylas",
+    elevation: "9,180 ft / 2,800 m",
+    role: "Boutique Luxury, Andean Wellness & Celebratory Finale",
+    tagline: "The Refined Alpine Sanctuary: Contemporary Design & Serenity",
+    concept:
+      "The sophisticated crescendo of the expedition. Spanning seven acres of terraced gardens along the slopes of the valley, Cuesta Serena merges contemporary architectural minimalism with ancient Andean spirit, offering an unobstructed 180-degree panorama of the entire Cordillera Blanca chain.",
+    architecture:
+      "Sophisticated boutique design featuring expansive floor-to-ceiling glass, native stone masonry, clean lines, meditation corners, and private balconies that capture the alpenglow illuminating the summits.",
+    dining:
+      "Refined contemporary Andean cuisine. A celebratory multi-course dinner celebrating regional produce, paired with curated South American wines, artisanal piscos, and herbal elixirs facing the glowing silhouette of Huascarán.",
+    image:
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1200",
+    amenities: [
+      "Heated outdoor swimming pool facing the Cordillera",
+      "Holistic Andean spa with local herbal treatments",
+      "Seven acres of private gardens & reflexology paths",
+      "Panoramic glass dining room & sunset terrace"
+    ]
+  },
+  {
+    id: "llaca-abuelo",
+    name: "Refugio Llaca & Hotel El Abuelo",
+    nights: "Nights 6 & 7 (Optional Extension)",
+    location: "Llaca Glacier Valley & Huaraz",
+    elevation: "14,665 ft / 4,470 m (Llaca) • 10,000 ft / 3,050 m (Huaraz)",
+    role: "High Alpine Outpost & Mountaineers' Recovery",
+    tagline: "Authentic Glacier Threshold & Alpine Celebration",
+    concept:
+      "For adventurers pushing toward the glaciated summit of Mount Vallunaraju (18,655 ft). Night 6 is spent in the rustic stone shelter of Refugio Llaca at the very tongue of the glacier for ice-axe training, followed by Night 7 at Hotel El Abuelo in Huaraz for deeply deserved hot showers and post-summit celebrations.",
+    architecture:
+      "Refugio Llaca is a pure alpine stone mountain hut with communal bunkrooms, wood-burning stove, and raw glacier proximity. Hotel El Abuelo in Huaraz is a classic mountaineering institution with warm timber finishes and historical mountain photography.",
+    dining:
+      "Expedition energy meals at the refuge (hot oat porridge, hearty pasta, and thermos brews), followed by celebratory mountain gastronomy and pisco sours at a private dinner in Huaraz.",
+    image:
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200",
+    amenities: [
+      "Direct alpine access to Llaca glacier & ice wall",
+      "Certified UIAGM mountain guide base camp",
+      "Medical oxygen & hyperbaric equipment on site",
+      "Restorative hot showers & celebration lounge in Huaraz"
+    ]
+  }
+];
+
+const EXPEDITION_FLEET_DATA = [
+  {
+    id: "sprinter-4x4",
+    name: "Mercedes-Benz Sprinter 4x4 Van",
+    category: "Overland Touring & Scenic Valley Transit",
+    badge: "Executive Overland Van",
+    concept:
+      "Our primary mobile sanctuary for trans-Andean valley traverses, scenic highway transfers, and luggage staging along the Callejón de Huaylas. Custom-engineered with factory 4x4 all-wheel drive, reinforced suspension, high roof clearance, and whisper-quiet cabin insulation.",
+    role: "Scenic valley crossings, airport arrival/departure transfers, and gear staging.",
+    image:
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1200",
+    specs: [
+      "Factory 4x4 drivetrain with high-clearance off-road suspension",
+      "Reclining leather captain seats with generous legroom & personal armrests",
+      "Thermal tinted panoramic windows designed for 360° alpine photography",
+      "Onboard continuous-flow medical oxygen system & clinical pulse oximeters",
+      "Individual high-output USB-A and USB-C charging ports at every seat",
+      "Chilled spring water cooler & vacuum flasks with fresh muña/coca herbal tea"
+    ]
+  },
+  {
+    id: "land-cruiser-jeep",
+    name: "Jeep / Toyota Land Cruiser 4WD",
+    category: "Rugged Moraine & Glacial Valley Access",
+    badge: "Expedition 4x4 for Travelers",
+    concept:
+      "Dedicated heavy-duty off-road vehicles reserved exclusively for travelers in intimate small groups (maximum 3 to 4 guests per vehicle). Built with true dual-range 4WD transfer cases and locking differentials to conquer steep, unpaved moraine ascents and glacial valley trailheads where larger vans and tour coaches cannot tread.",
+    role: "Frontline access to Parón upper trails, Llaca Glacier, Quebrada Ulta, and Laguna 513.",
+    image:
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1200",
+    specs: [
+      "Heavy-duty low-range 4WD transfer case, locking differentials & BFGoodrich all-terrain tires",
+      "Intimate small-group seating (3–4 travelers maximum) ensuring window views & agility",
+      "Active Garmin InReach satellite bidirectional communicator with live GPS tracking",
+      "Heavy-duty Thule roof/hitch bike carrier systems for swift gravel bike deployment",
+      "Expedition recovery winch, high-lift jack, tow straps, and comprehensive field trauma kit",
+      "Supplemental medical-grade oxygen cylinder ready on all high-altitude approaches"
+    ]
+  },
+  {
+    id: "bike-chase",
+    name: "Gravel & E-Bike Support Fleet with Chase Vehicle",
+    category: "Human-Scale Active Exploration & Support",
+    badge: "Active Alpine Mobility",
+    concept:
+      "For experiencing the living territory at human scale. High-performance gravel and mountain bikes allow exhilarating downhill descents through rural farming communities and eucalyptus groves, with an agile 4WD chase vehicle shadowing riders to offer mechanical support, hydration, and an immediate seat whenever desired.",
+    role: "Scenic downhill rides along quiet agricultural dirt roads through cornfields and rose terraces.",
+    image:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1200",
+    specs: [
+      "High-end gravel and mountain bikes individually sized and tuned for each guest",
+      "Electric pedal-assist (E-Bike) models available for gentle high-altitude ascents",
+      "Homologated Giro/Bell safety helmets, trail gloves, and protective wind shells",
+      "Permanent 4WD chase support vehicle equipped with bike tools, floor pumps & spare tubes",
+      "Complete hop-on / hop-off freedom: ride as much or as little as you choose with zero pressure"
+    ]
+  }
+];
+
 const PRESENTATION_SLIDES = [
   {
     num: 1,
@@ -387,7 +543,7 @@ const PRESENTATION_SLIDES = [
     type: "light",
     bullets: [
       "71% of the world's tropical glaciers are located in Peru; the majority along the Cordillera Blanca.",
-      "Centuries-old meltwaters descend to irrigate fertile valleys: crops of blueberries, export roses, and strawberries.",
+      "Centuries-old meltwaters descend into fertile valleys that sustain Andean communities and nourish crops of blueberries, export roses, and strawberries.",
       "Huascarán Biosphere Reserve (UNESCO) with more than thirty peaks soaring above 20,000 ft (6,000 m).",
       "A journey structured along the glacial lifeline: from perpetual ice to the hands of Quechua farming communities."
     ]
@@ -559,10 +715,10 @@ const PRESENTATION_SLIDES = [
     subtitle: "Boutique lodges rooted in their respective mountain landscapes",
     type: "light",
     bullets: [
-      "• Santa Cruz Lodge (Caraz • 7,380 ft): Historic hacienda surrounded by fruit orchards for low acclimatization.",
-      "• Wayarumi Eco-Lodge (Yungay • 8,200 ft): Earthen adobe and native timber with direct Huascarán views.",
-      "• Cuesta Serena Lodge (Anta • 9,180 ft): Luxury retreat with Andean spa, heated pool, and signature cuisine.",
-      "• Llaca Mountain Refuge (14,665 ft): Authentic alpine base camp for the technical summit extension."
+      "• Santa Cruz Lodge (Caraz • 7,380 ft): Historic Andean country estate amid fruit orchards; gentle low-altitude acclimatization & organic garden dining.",
+      "• Wayarumi Eco-Lodge (Yungay • 8,200 ft): Vernacular adobe & stone architecture facing Mount Huascarán; strategic hub for Parón and 513 tarns.",
+      "• Cuesta Serena Lodge (Anta • 9,180 ft): Contemporary luxury sanctuary with heated pool, holistic Andean spa, and celebratory mountain views.",
+      "• High-Mountain Extension: Refugio Llaca (14,665 ft) for technical glacier preparation & Hotel El Abuelo (Huaraz) for summit recovery."
     ]
   },
   {
@@ -582,14 +738,14 @@ const PRESENTATION_SLIDES = [
   {
     num: 18,
     tag: "EXPEDITION FLEET",
-    title: "Expedition Fleet: Accessing Remote Terrain",
-    subtitle: "Vehicles custom-prepared for rugged Andean mountain roads",
+    title: "Expedition Fleet: Accessing Remote Andean Terrain",
+    subtitle: "Custom-configured vehicles engineered for rugged mountain roads and traveler comfort",
     type: "light",
     bullets: [
-      "• Mercedes-Benz Sprinter 4x4: Overland comfort with leather seats, reinforced suspension, and oxygen onboard.",
-      "• Jeep Rubicon / Toyota Prado 4WD: Navigating high moraine tracks inaccessible to commercial tour buses.",
-      "• Gravel & Mountain Bike Fleet: Purpose-built bikes for exhilarating dirt road descents through the valley.",
-      "• Garmin InReach satellite communication units assigned to every expedition team."
+      "• Mercedes-Benz Sprinter 4x4 Van: Overland comfort with reclining leather seats, thermal panoramic windows, reinforced 4x4 suspension, and continuous-flow oxygen onboard.",
+      "• Jeep / Toyota Land Cruiser 4WD (similar): Dedicated expedition off-roaders for travelers in intimate groups of 3–4, accessing steep moraines and glacial trailheads beyond commercial reach.",
+      "• Active Mobility & Chase Vehicle: Gravel & e-bikes for exhilarating valley descents, shadowed by a permanent 4WD support vehicle with bike tools and refreshments.",
+      "• Redundant Safety Protocols: Garmin InReach satellite tracking, pulse oximetry, continuous-flow oxygen, and WFR-certified expedition drivers on all routes."
     ]
   },
   {
@@ -616,7 +772,7 @@ const PRESENTATION_SLIDES = [
     bullets: [
       "• 6 Days / 5 Nights Program: USD 8,900 per person (double occupancy)",
       "• High Mountain Extension (8 Days / Summit Vallunaraju): USD 2,850 additional per person",
-      "• Includes: All private 4WD ground transfers from Anta Airport, 5 nights boutique lodging, full board with trail lunches and curated lodge dinners, daily exploration menu, bilingual guides, and equipment.",
+      "• Includes: All private 4WD ground transfers from Anta Airport, 5 nights boutique lodging, full board with trail lunches and curated lodge dinners, tailored daily explorations, bilingual guides, and equipment.",
       "• Direct Social Contribution: Mandatory donation included for the Don Bosco Artisans Foundation in Chacas.",
       "• Excludes: Commercial Lima-Anta flights and high-altitude medical travel insurance."
     ]
@@ -635,7 +791,7 @@ const PRESENTATION_SLIDES = [
 ];
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<"explorer" | "deck" | "altitudes" | "zones" | "chacas" | "pitch">("explorer");
+  const [activeTab, setActiveTab] = useState<"explorer" | "deck" | "altitudes" | "zones" | "chacas" | "lodges" | "pitch">("explorer");
   const [selectedDay, setSelectedDay] = useState<DayData>(ITINERARY_DAYS[0]);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isCopied, setIsCopied] = useState(false);
@@ -659,11 +815,12 @@ export default function App() {
 From Glacial Source to Fertile Valley: Ancient Ice, Arid Oases, and Living Mountain Heritage.
 
 WHAT MAKES THIS EXPEDITION UNIQUE:
-1. THE HIGH-ANDEAN PARADOX: High in Peru's northern Andes lies Earth's highest concentration of tropical glaciers (71% of the global total). In an alpine landscape that feels deceptively arid, millennia-old glacial meltwaters feed gravity-fed pre-Inca aqueducts and fertile valley terraces cultivating export blueberries, strawberries, and cut roses.
+1. THE HIGH-ANDEAN PARADOX: High in Peru's northern Andes lies Earth's highest concentration of tropical glaciers (71% of the global total). In an alpine landscape that feels deceptively arid, millennia-old glacial meltwaters feed gravity-fed pre-Inca aqueducts and fertile valleys that sustain Andean communities, cultivating thriving crops of blueberries, strawberries, and cut roses.
 2. FAR BEYOND MASS TOURISM: We bypass crowded tourist viewpoints, exploring Laguna Parón via an off-the-beaten-path upper moraine traverse beneath Mount Artesonraju, and delving into untouched sanctuaries like Laguna 513 in complete wilderness silence.
 3. LIVING MOUNTAIN CRAFTSMANSHIP: Hands-on orchard harvests with local Quechua families, crossing the continental divide at Punta Olímpica Tunnel (15,530 ft), and an exclusive private immersion into the world-renowned Renaissance woodworking and masonry ateliers of Chacas.
 4. ADAPTIVE EXPLORATION DESIGN: Daily tiered options tailored to every guest profile (active alpine moraine hikes, contemplative Queñual cloud-forest walks, valley gravel cycling, plus an optional 18,655-ft glaciated summit).
-5. PROGRESSIVE ACCLIMATIZATION: Our "Climb high, sleep low" medical protocol ensures deep physical well-being and effortless enjoyment without altitude exhaustion.`;
+5. PROGRESSIVE ACCLIMATIZATION: Our "Climb high, sleep low" medical protocol ensures deep physical well-being and effortless enjoyment without altitude exhaustion.
+6. PURPOSE-BUILT EXPEDITION FLEET: Combining luxury Mercedes-Benz Sprinter 4x4 vans for scenic overland valley journeys with dedicated Jeep / Toyota Land Cruiser 4WD off-roaders to bring small traveler groups directly into rugged glacial moraines beyond commercial reach.`;
     navigator.clipboard.writeText(text);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
@@ -743,6 +900,16 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
               Chacas & Don Bosco
             </button>
             <button
+              onClick={() => setActiveTab("lodges")}
+              className={`px-4 py-1.5 rounded-full text-[11px] uppercase tracking-wider transition-all ${
+                activeTab === "lodges"
+                  ? "bg-[#c69255] text-black font-semibold shadow-md"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
+              Lodges & Fleet
+            </button>
+            <button
               onClick={() => setActiveTab("pitch")}
               className={`px-4 py-1.5 rounded-full text-[11px] uppercase tracking-wider transition-all ${
                 activeTab === "pitch"
@@ -820,7 +987,8 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
                   High in Peru's northern Andes lies Earth's highest concentration of tropical
                   glaciers—a realm of stark granite and arid plateaus brought vibrantly to life by glacial runoff.
                   Here, ancestral gravity canals channel meltwater from 20,000-foot summits into fertile valleys
-                  cultivating export blueberries, strawberries, and cut roses. An expedition tracing the vital pulse of water.
+                  that sustain the life and heritage of Andean communities, cultivating thriving harvests of blueberries,
+                  strawberries, and cut roses. An expedition tracing the vital pulse of water.
                 </motion.p>
 
                 <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
@@ -856,8 +1024,8 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
                   </div>
                   <h2 className="text-3xl md:text-4xl font-serif font-light leading-snug">
                     “Cordillera Blanca is not about 'looking at mountains.' It is about
-                    advancing through a territory where glaciers, ancestral canals, communities, and
-                    craftsmanship are deeply bound together.”
+                    journeying through a territory where glaciers, ancestral canals, communities, and
+                    highland crops are deeply bound together.”
                   </h2>
                   <p className="text-white/70 font-light leading-relaxed text-sm md:text-base">
                     As a multidisciplinary team of guides, territory specialists, and
@@ -865,8 +1033,8 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
                     conventional tourist patterns. We unite{" "}
                     <strong className="text-white font-medium">four distinct ecological zones</strong>{" "}
                     (Callejón de Huaylas, Cordillera Negra, Cordillera Blanca, and the
-                    Cloud Forest transition into Chacas), offering a daily menu of active
-                    mountain hikes, contemplative botanical walks, and gravel cycling.
+                    Cloud Forest transition into Chacas), with curated daily explorations spanning
+                    active mountain hikes, contemplative botanical walks, and gravel cycling.
                     No traveler is rushed, and everyone connects with the Andes at their
                     own rhythm.
                   </p>
@@ -1609,7 +1777,238 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
         )}
 
         {/* ========================================================
-            TAB 6: COMMERCIAL PITCH & MARKETING TOOLKIT
+            TAB 6: BASE CAMP LODGES & ACCOMMODATIONS
+            ======================================================== */}
+        {activeTab === "lodges" && (
+          <section className="py-20 px-6 max-w-7xl mx-auto space-y-16">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="text-[10px] uppercase tracking-[0.4em] text-[#c69255] font-bold block">
+                Mountain Outposts & Recovery
+              </span>
+              <h2 className="text-4xl md:text-5xl font-serif font-light leading-tight">
+                Our Base Camps: The Luxury of the Essential
+              </h2>
+              <p className="text-white/70 text-sm md:text-base font-light leading-relaxed">
+                Rather than generic, detached luxury hotels, Explora curates intimate, character-filled mountain properties where deep recovery and territorial authenticity take center stage. Each lodge plays a critical medical role in our progressive acclimatization design.
+              </p>
+            </div>
+
+            {/* Acclimatization Protocol Insight Banner */}
+            <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-r from-[#c69255]/15 via-white/5 to-[#3a7d8c]/15 border border-[#c69255]/30 grid md:grid-cols-12 gap-6 items-center shadow-xl">
+              <div className="md:col-span-8 space-y-2">
+                <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#c69255] font-semibold">
+                  <Shield className="w-4 h-4" />
+                  <span>The "Climb High, Sleep Low" Lodging Philosophy</span>
+                </div>
+                <p className="text-sm text-white/80 font-light leading-relaxed">
+                  Notice that during the first four nights, our guests sleep in the protected microclimates of Caraz (7,380 ft) and Yungay (8,200 ft). This keeps overnight hypoxic stress exceptionally low, ensuring deep restorative REM sleep, rich cellular oxygenation, and maximum vitality for daytime 14,000+ ft glacial expeditions.
+                </p>
+              </div>
+              <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col gap-3 justify-center">
+                <div className="p-3 rounded-xl bg-black/40 border border-white/10 text-center">
+                  <span className="text-[10px] uppercase tracking-wider text-white/50 block">Overnight Floor</span>
+                  <span className="text-lg font-serif text-[#c69255] font-bold">7,380 – 9,180 ft</span>
+                </div>
+                <div className="p-3 rounded-xl bg-black/40 border border-white/10 text-center">
+                  <span className="text-[10px] uppercase tracking-wider text-white/50 block">Daytime Excursions</span>
+                  <span className="text-lg font-serif text-[#3a7d8c] font-bold">Up to 15,530 ft</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Lodge Cards Grid */}
+            <div className="space-y-12">
+              {LODGES_DATA.map((lodge, idx) => (
+                <div
+                  key={lodge.id}
+                  className="rounded-3xl bg-white/[0.03] border border-white/10 overflow-hidden shadow-2xl grid lg:grid-cols-12 gap-8 items-stretch hover:border-[#c69255]/40 transition-all duration-300"
+                >
+                  {/* Photo Column */}
+                  <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-full">
+                    <img
+                      src={lodge.image}
+                      alt={lodge.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#121215]" />
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                      <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-[#c69255] border border-[#c69255]/30">
+                        {lodge.nights}
+                      </span>
+                      <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-white/90 border border-white/20">
+                        {lodge.elevation}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Details Column */}
+                  <div className="lg:col-span-7 p-8 lg:p-10 space-y-6 flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-xs text-[#c69255] uppercase tracking-widest font-semibold">
+                        <MapPin className="w-3.5 h-3.5" />
+                        <span>{lodge.location}</span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-serif font-light text-white">
+                        {lodge.name}
+                      </h3>
+                      <p className="text-xs uppercase tracking-wider text-white/50 font-medium">
+                        {lodge.tagline}
+                      </p>
+                      <p className="text-sm text-white/80 font-light leading-relaxed pt-2">
+                        {lodge.concept}
+                      </p>
+                    </div>
+
+                    {/* Architecture & Dining Split */}
+                    <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-white/10 text-xs">
+                      <div className="space-y-1.5 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <span className="text-[#c69255] uppercase tracking-wider font-bold block flex items-center gap-1.5">
+                          <Mountain className="w-3.5 h-3.5" /> Architecture & Setting
+                        </span>
+                        <p className="text-white/70 leading-relaxed font-light">
+                          {lodge.architecture}
+                        </p>
+                      </div>
+                      <div className="space-y-1.5 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <span className="text-[#3a7d8c] uppercase tracking-wider font-bold block flex items-center gap-1.5">
+                          <Utensils className="w-3.5 h-3.5" /> Gastronomy & Hearth
+                        </span>
+                        <p className="text-white/70 leading-relaxed font-light">
+                          {lodge.dining}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Amenities list */}
+                    <div className="pt-2 flex flex-wrap gap-2">
+                      {lodge.amenities.map((amenity, aIdx) => (
+                        <span
+                          key={aIdx}
+                          className="px-3 py-1 rounded-full bg-white/5 text-[10px] text-white/70 border border-white/10 flex items-center gap-1.5"
+                        >
+                          <CheckCircle2 className="w-3 h-3 text-[#c69255]" />
+                          {amenity}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* EXPEDITION FLEET & HIGH-ALTITUDE MOBILITY */}
+            <div className="pt-20 border-t border-white/10 space-y-12">
+              <div className="text-center max-w-3xl mx-auto space-y-4">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-[#3a7d8c] font-bold block">
+                  Logistics & High-Altitude Mobility
+                </span>
+                <h2 className="text-4xl md:text-5xl font-serif font-light leading-tight">
+                  Our Expedition Fleet: Accessing Remote Terrain
+                </h2>
+                <p className="text-white/70 text-sm md:text-base font-light leading-relaxed">
+                  Navigating the Cordillera Blanca demands vehicles purpose-engineered for extreme verticality and unpaved moraine roads. We combine executive overland 4x4 vans with dedicated off-road 4WD units for small traveler parties.
+                </p>
+              </div>
+
+              {/* Fleet Cards Grid */}
+              <div className="grid lg:grid-cols-3 gap-8">
+                {EXPEDITION_FLEET_DATA.map((item) => (
+                  <div
+                    key={item.id}
+                    className="group rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#c69255]/40 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xl hover:shadow-2xl"
+                  >
+                    <div>
+                      {/* Image header */}
+                      <div className="relative h-56 overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e10] via-black/40 to-transparent" />
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] tracking-wider uppercase font-semibold text-[#c69255] border border-[#c69255]/30">
+                            {item.badge}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Card Content */}
+                      <div className="p-6 space-y-4">
+                        <div>
+                          <span className="text-[10px] uppercase tracking-widest text-white/50 block">
+                            {item.category}
+                          </span>
+                          <h3 className="text-2xl font-serif font-light text-white mt-1">
+                            {item.name}
+                          </h3>
+                        </div>
+
+                        <p className="text-xs text-white/70 font-light leading-relaxed">
+                          {item.concept}
+                        </p>
+
+                        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 text-[11px] text-white/80 font-light">
+                          <span className="text-[#c69255] font-medium block mb-1">Operational Role:</span>
+                          {item.role}
+                        </div>
+
+                        {/* Specs bullet list */}
+                        <div className="space-y-2 pt-2 border-t border-white/10">
+                          <span className="text-[10px] uppercase tracking-wider text-white/40 font-semibold block">
+                            Vehicle Equipment & Features
+                          </span>
+                          <ul className="space-y-1.5">
+                            {item.specs.map((spec, sIdx) => (
+                              <li key={sIdx} className="text-[11px] text-white/70 flex items-start gap-2">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#3a7d8c] shrink-0 mt-0.5" />
+                                <span>{spec}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Redundant Safety Standards Banner */}
+              <div className="p-6 md:p-8 rounded-3xl bg-black/50 border border-white/10 grid md:grid-cols-3 gap-6">
+                <div className="flex items-start gap-3">
+                  <Shield className="w-5 h-5 text-[#c69255] shrink-0 mt-1" />
+                  <div>
+                    <h4 className="text-sm font-semibold text-white">Emergency Oxygen Onboard</h4>
+                    <p className="text-xs text-white/60 font-light mt-1">
+                      Continuous-flow medical O2 tanks & Nonin pulse oximeters installed across the fleet.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Radio className="w-5 h-5 text-[#3a7d8c] shrink-0 mt-1" />
+                  <div>
+                    <h4 className="text-sm font-semibold text-white">Satellite Two-Way Comms</h4>
+                    <p className="text-xs text-white/60 font-light mt-1">
+                      Garmin InReach satellite tracking & active SOS linked to our Lima operations base.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Car className="w-5 h-5 text-[#c69255] shrink-0 mt-1" />
+                  <div>
+                    <h4 className="text-sm font-semibold text-white">WFR Certified Drivers</h4>
+                    <p className="text-xs text-white/60 font-light mt-1">
+                      Wilderness First Responder trained drivers with decades of Andean mountain road experience.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ========================================================
+            TAB 7: COMMERCIAL PITCH & MARKETING TOOLKIT
             ======================================================== */}
         {activeTab === "pitch" && (
           <section className="py-20 px-6 max-w-5xl mx-auto space-y-12">
@@ -1655,8 +2054,8 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
                 <p>
                   1. THE HIGH-ANDEAN PARADOX: High in Peru's northern Andes lies Earth's highest concentration
                   of tropical glaciers (71% of the global total). In an alpine landscape that feels deceptively arid,
-                  millennia-old glacial meltwaters feed gravity-fed pre-Inca aqueducts and fertile valley terraces cultivating
-                  export blueberries, strawberries, and cut roses.
+                  millennia-old glacial meltwaters feed gravity-fed pre-Inca aqueducts and fertile valleys that sustain
+                  Andean communities, cultivating thriving crops of blueberries, strawberries, and cut roses.
                 </p>
                 <p>
                   2. FAR BEYOND MASS TOURISM: We bypass crowded tourist viewpoints, exploring Laguna Parón via an
@@ -1675,6 +2074,9 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
                 <p>
                   5. PROGRESSIVE ACCLIMATIZATION: Our "Climb high, sleep low" medical protocol ensures deep physical well-being
                   and effortless enjoyment without altitude exhaustion.
+                </p>
+                <p>
+                  6. PURPOSE-BUILT EXPEDITION FLEET: Combining luxury Mercedes-Benz Sprinter 4x4 vans for scenic overland valley journeys with dedicated Jeep / Toyota Land Cruiser 4WD off-roaders to bring small traveler groups directly into rugged glacial moraines beyond commercial reach.
                 </p>
               </div>
 
@@ -1760,6 +2162,12 @@ WHAT MAKES THIS EXPEDITION UNIQUE:
               className="hover:text-white transition-colors"
             >
               Chacas
+            </button>
+            <button
+              onClick={() => setActiveTab("lodges")}
+              className="hover:text-white transition-colors"
+            >
+              Lodges
             </button>
           </div>
 
